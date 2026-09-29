@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#3b2a1e">
+  <title>포슬포슬 버섯농장</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <main id="stage">
+      <canvas id="field" aria-label="버섯 원목"></canvas>
+      <div id="hud">
+        <div class="hud-top">
+          <div class="currency">
+            <div class="spores"><span class="spore-ico">✦</span><span id="spores">0</span></div>
+            <div class="rate"><span id="rate">0</span> /초</div>
+          </div>
+          <div class="hud-right">
+            <div class="log-name" id="logName"></div>
+            <div class="myc hidden" id="mycBadge" title="균사">🧬 <span id="myc">0</span></div>
+          </div>
+        </div>
+        <div class="nutrient" title="영양: 버섯이 자라려면 필요해요">
+          <span class="ico">💧</span>
+          <div class="bar"><div class="fill" id="nutFill"></div></div>
+          <span class="nut-text" id="nutText"></span>
+        </div>
+        <div id="frenzy" class="frenzy hidden">🎉 버섯 축제! 가치·성장 ×3 <b id="frenzyTime"></b></div>
+      </div>
+      <div id="hint" class="hint">👆 톡톡 두드리거나 꾹 눌러 <b>영양제</b>를 뿌리고<br>다 자란 버섯을 <b>쓱— 그어서</b> 수확하세요!</div>
+      <div id="toasts"></div>
+    </main>
+
+    <aside id="panel">
+      <nav id="tabs">
+        <button data-tab="upgrades" class="active"><i>🧪</i><span>강화</span></button>
+        <button data-tab="logs"><i>🪵</i><span>원목</span><em class="dot hidden" id="dotLogs"></em></button>
+        <button data-tab="book"><i>📖</i><span>도감</span><em class="dot hidden" id="dotBook"></em></button>
+        <button data-tab="prestige" id="tabPrestige" class="locked"><i>🧬</i><span>균사</span></button>
+        <button data-tab="stats"><i>📜</i><span>기록</span></button>
+      </nav>
+
+      <section class="tab active" id="tab-upgrades">
+        <div class="buy-amount" id="buyAmount">
+          <span>구매 수량</span>
+          <button data-amt="1" class="on">×1</button>
+          <button data-amt="10">×10</button>
+          <button data-amt="max">최대</button>
+        </div>
+        <div class="list" id="upgradeList"></div>
+      </section>
+
+      <section class="tab" id="tab-logs">
+        <p class="tab-desc">새 원목에서는 더 비싼 버섯과 새로운 품종이 자라요. 해금한 원목은 언제든 바꿔 탈 수 있어요.</p>
+        <div class="list" id="logList"></div>
+      </section>
+
+      <section class="tab" id="tab-book">
+        <div class="book-summary" id="bookSummary"></div>
+        <div id="bookList"></div>
+      </section>
+
+      <section class="tab" id="tab-prestige">
+        <div class="prestige-box">
+          <h3>🧬 포자 방출</h3>
+          <p>원목 속 균사를 숲에 퍼뜨려요. <b>포자·강화·원목</b>이 초기화되지만 <b>균사</b>를 얻어요.<br><small>도감과 균사 강화는 영원히 유지돼요.</small></p>
+          <div class="prestige-gain">
+            <div>얻을 균사 <b id="pGain">0</b></div>
+            <div class="sub">다음 균사까지 <span id="pNext"></span></div>
+          </div>
+          <button id="prestigeBtn" class="big-btn">포자 방출하기</button>
+          <div class="myc-info" id="mycInfo"></div>
+        </div>
+        <h4 class="sub-title">균사 강화</h4>
+        <div class="list" id="pUpgradeList"></div>
+      </section>
+
+      <section class="tab" id="tab-stats">
+        <div class="stats" id="statsList"></div>
+        <div class="settings">
+          <label class="toggle"><input type="checkbox" id="optParticles"> 화려한 효과</label>
+          <div class="btn-row">
+            <button id="btnSave">💾 저장</button>
+            <button id="btnExport">📤 내보내기</button>
+            <button id="btnImport">📥 불러오기</button>
+            <button id="btnReset" class="danger">🗑️ 초기화</button>
+          </div>
+        </div>
+        <p class="credits">포슬포슬 버섯농장 · 클릭 &amp; 드래그 버섯 재배 인크리멘탈</p>
+      </section>
+    </aside>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog">
+    <div class="modal-box">
+      <div id="modalBody"></div>
+      <div class="modal-btns" id="modalBtns"></div>
+    </div>
+  </div>
+
+  <script src="js/format.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

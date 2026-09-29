@@ -1,0 +1,11 @@
+{
+  "name": "poslposl-mushroom-farm",
+  "version": "0.1.0",
+  "private": true,
+  "description": "포슬포슬 버섯농장 — 클릭 & 드래그 버섯 재배 인크리멘탈 게임",
+  "scripts": {
+    "start": "npx --yes http-server -c-1 -p 8080 .",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "sim": "node tools/balance-sim.js"
+  }
+}
