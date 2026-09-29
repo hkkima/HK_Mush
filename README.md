@@ -5,6 +5,8 @@
 
 ## 실행
 
+**▶ 플레이: <https://hkkima.github.io/HK_Mush/>** (`main`에 푸시하면 GitHub Actions가 자동 배포)
+
 빌드가 필요 없는 순수 HTML/JS/Canvas 게임이다.
 
 - `index.html`을 브라우저로 바로 열거나
